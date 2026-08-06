@@ -76,9 +76,16 @@ export function useHlsPlayer({
                 // Exceptions might exist for iOS where MSE is strictly not available, check Hls.isSupported() result carefully.
                 // Hls.isSupported() is false on iOS Safari usually, so this block won't run there.
 
+                // Detect Chrome 66 / legacy WebView (MSE timestamp-offset bug)
+                const chromeMatch = navigator.userAgent.match(/Chrome\/(\d+)/);
+                const chromeMajor = chromeMatch ? parseInt(chromeMatch[1], 10) : 999;
+                const isLegacyChrome = chromeMajor < 73;
+
                 const config: any = {
                     // Worker & Performance
-                    enableWorker: true,
+                    // Disable worker on legacy Chrome (<73): WebWorker+MSE combo has
+                    // timestampOffset issues that cause "negative DTS" stream parse failures
+                    enableWorker: !isLegacyChrome,
                     lowLatencyMode: false,
 
                     // Buffer Settings
@@ -117,6 +124,13 @@ export function useHlsPlayer({
 
                     // Backbuffer
                     backBufferLength: 90,
+
+                    // Chrome 66 MSE workaround: negative DTS after timestampOffset
+                    // Default nudgeMaxRetry=3 gives up too fast; 20 retries let HLS.js
+                    // find a valid offset even for B-frame streams on old MSE implementations
+                    nudgeMaxRetry: isLegacyChrome ? 20 : 3,
+                    nudgeOffset: isLegacyChrome ? 0.1 : 0.1,
+                    appendErrorMaxRetry: isLegacyChrome ? 10 : 3,
                 };
 
                 // Use custom loader if ad filtering is enabled
@@ -178,6 +192,7 @@ export function useHlsPlayer({
                 // Error Handling
                 let networkErrorRetries = 0;
                 let mediaErrorRetries = 0;
+                let audioCodecSwapped = false;
                 const MAX_RETRIES = 3;
 
                 hls.on(Hls.Events.ERROR, (event, data) => {
@@ -195,6 +210,11 @@ export function useHlsPlayer({
                             case Hls.ErrorTypes.MEDIA_ERROR:
                                 mediaErrorRetries++;
                                 if (mediaErrorRetries <= MAX_RETRIES) {
+                                    // First try swapAudioCodec (fixes codec mismatch / append failures)
+                                    if (!audioCodecSwapped) {
+                                        audioCodecSwapped = true;
+                                        hls?.swapAudioCodec();
+                                    }
                                     hls?.recoverMediaError();
                                 } else {
                                     onError?.('媒体错误：视频格式不支持或已损坏');
