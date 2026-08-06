@@ -105,6 +105,7 @@ export default async function RootLayout({
   if(!Array.prototype.at){Array.prototype.at=function(i){i=Math.trunc(i)||0;if(i<0)i+=this.length;if(i<0||i>=this.length)return undefined;return this[i]}}
   if(!String.prototype.at){String.prototype.at=function(i){i=Math.trunc(i)||0;if(i<0)i+=this.length;if(i<0||i>=this.length)return undefined;return this[i]}}
   if(typeof structuredClone==='undefined')window.structuredClone=function(v){return JSON.parse(JSON.stringify(v))};
+  if(!String.prototype.matchAll){String.prototype.matchAll=function(re){var str=this;if(typeof re==='string')re=new RegExp(re,'g');var flags=re.flags||'';if(flags.indexOf('g')<0)throw new TypeError('matchAll called with a non-global RegExp');var r=new RegExp(re.source,flags),results=[],m;while((m=r.exec(str))!==null){if(m.index===r.lastIndex)r.lastIndex++;results.push(m);}var i=0;var iter={next:function(){return i<results.length?{value:results[i++],done:false}:{value:undefined,done:true}}};if(typeof Symbol!=='undefined'&&Symbol.iterator)iter[Symbol.iterator]=function(){return iter};return iter;}};
 })();
         ` }} />
         {/* PWA Manifest */}
