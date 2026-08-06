@@ -45,6 +45,33 @@ export function useHlsPlayer({
         // Check if MSE is available (required by HLS.js)
         const isMSESupported = Hls.isSupported();
 
+        // Detect Chrome 66 / legacy Android WebView: Chrome MSE has a hard bug where
+        // B-frame H.264 streams cause "negative DTS after timestampOffset" which cannot
+        // be recovered. Bypass HLS.js entirely — Android's native media player handles
+        // m3u8 via the system ExoPlayer stack without going through Chrome MSE.
+        const chromeMatch = navigator.userAgent.match(/Chrome\/(\d+)/);
+        const chromeMajor = chromeMatch ? parseInt(chromeMatch[1], 10) : 999;
+        const isLegacyChrome = chromeMajor < 73;
+
+        if (isLegacyChrome) {
+            // Native fallback: let Android system player handle m3u8 directly
+            video.src = src;
+            if (autoPlay) {
+                video.play().catch((err) => {
+                    onAutoPlayPrevented?.(err);
+                });
+            }
+            // Error event for unsupported streams
+            const handleError = () => {
+                onError?.('视频加载失败，请尝试其他线路');
+            };
+            video.addEventListener('error', handleError, { once: true });
+            return () => {
+                video.removeEventListener('error', handleError);
+                video.src = '';
+            };
+        }
+
         if (isMSESupported) {
 
             // Define custom loader class to intercept manifest loading

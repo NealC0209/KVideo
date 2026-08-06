@@ -646,6 +646,7 @@ export function EpisodeList({
           )}
           <button
             onClick={() => onEpisodeSectionCollapseChange?.(!episodeSectionCollapsed)}
+            data-focusable
             className="p-1.5 rounded-[var(--radius-2xl)] bg-[var(--glass-bg)] text-[var(--text-color-secondary)] hover:bg-[var(--glass-hover)] border border-[var(--glass-border)] transition-all duration-200 cursor-pointer"
             aria-label={episodeSectionCollapsed ? '展开选集列表' : '折叠选集列表'}
             title={episodeSectionCollapsed ? '展开选集列表' : '折叠选集列表'}
@@ -676,6 +677,7 @@ export function EpisodeList({
                 <button
                   key={label}
                   onClick={() => setEpisodePage(page)}
+                  data-focusable
                   className={`
                     px-2.5 py-1 rounded-[var(--radius-2xl)] text-xs font-medium transition-all duration-200 cursor-pointer
                     ${episodePage === page
@@ -719,6 +721,7 @@ export function EpisodeList({
                       }
                     }}
                     tabIndex={0}
+                    data-focusable
                     role="radio"
                     aria-checked={isCurrentEpisode}
                     aria-current={isCurrentEpisode ? 'true' : undefined}
