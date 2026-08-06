@@ -48,6 +48,7 @@ async function transpileFile(filePath) {
     loader: 'js',
     minify: true,
     legalComments: 'none',
+    define: { 'globalThis': 'window' },
   });
 
   await fs.writeFile(filePath, result.code);

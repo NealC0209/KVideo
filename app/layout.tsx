@@ -100,7 +100,7 @@ export default async function RootLayout({
   if(!Array.prototype.flat)Array.prototype.flat=function(d){d=d===undefined?1:d;return this.reduce(function(a,v){return a.concat(d>0&&Array.isArray(v)?v.flat(d-1):v)},[])};
   if(!Array.prototype.flatMap)Array.prototype.flatMap=function(f,t){return this.map(f,t).flat(1)};
   if(!Object.fromEntries)Object.fromEntries=function(it){var o={};for(var e of it)o[e[0]]=e[1];return o};
-  if(!globalThis)window.globalThis=window;
+  try{globalThis}catch(e){window.globalThis=window}
   if(typeof queueMicrotask==='undefined')window.queueMicrotask=function(fn){Promise.resolve().then(fn)};
   if(!Array.prototype.at){Array.prototype.at=function(i){i=Math.trunc(i)||0;if(i<0)i+=this.length;if(i<0||i>=this.length)return undefined;return this[i]}}
   if(!String.prototype.at){String.prototype.at=function(i){i=Math.trunc(i)||0;if(i<0)i+=this.length;if(i<0||i>=this.length)return undefined;return this[i]}}
