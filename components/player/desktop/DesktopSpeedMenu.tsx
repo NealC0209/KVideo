@@ -258,7 +258,7 @@ export function DesktopSpeedMenu({
                     onClick={() => onSpeedChange(speed)}
                     className={`w-full ${isRotated ? 'px-2 py-0.5 text-[10px]' : 'px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm'} rounded-[var(--radius-2xl)] font-medium transition-colors ${playbackRate === speed
                         ? 'bg-[var(--accent-color)] text-white'
-                        : 'text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_15%,transparent)]'
+                        : 'text-[var(--text-color)] hover:bg-[var(--glass-hover)]'
                         }`}
                 >
                     {speed}x

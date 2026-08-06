@@ -29,7 +29,7 @@ export function DesktopRightControls({
     onShowCastMenu
 }: DesktopRightControlsProps) {
     return (
-        <div className="player-controls-right relative z-50 flex shrink-0 items-center gap-3">
+        <div className="player-controls-right relative z-50 flex shrink-0 items-center space-x-3">
             {/* Picture-in-Picture */}
             {
                 isPiPSupported && (

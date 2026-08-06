@@ -19,7 +19,7 @@ export function VideoPlayerError({
     maxRetries,
 }: VideoPlayerErrorProps) {
     return (
-        <div className="aspect-video bg-black rounded-[var(--radius-2xl)] flex items-center justify-center">
+        <div className="kvideo-container bg-black rounded-[var(--radius-2xl)] flex items-center justify-center">
             {/* Glass Card Container */}
             <div
                 className="player-error-glass animate-in fade-in zoom-in-95 duration-300"

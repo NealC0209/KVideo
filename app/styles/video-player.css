@@ -1,6 +1,26 @@
 /* Video Player Components */
 .kvideo-container {
     container-type: inline-size;
+    /* Chrome 66 fallback: simulate 16:9 via padding-top */
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    height: 0;
+}
+@supports (aspect-ratio: 16/9) {
+    .kvideo-container {
+        padding-top: unset;
+        height: unset;
+        aspect-ratio: 16 / 9;
+    }
+}
+/* All absolutely-positioned children must fill the padding-top box */
+.kvideo-container > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .spinner {
@@ -196,13 +216,19 @@
 
 /* Spinner with Glass Background */
 .spinner-glass {
-    width: clamp(40px, 8vw, 56px);
-    height: clamp(40px, 8vw, 56px);
+    width: 48px;
+    height: 48px;
     border: 4px solid rgba(255, 255, 255, 0.15);
     border-top-color: var(--accent-color);
     border-radius: var(--radius-full);
     animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     box-shadow: 0 0 20px rgba(0, 122, 255, 0.3);
+}
+@supports (width: clamp(1px, 1vw, 1px)) {
+    .spinner-glass {
+        width: clamp(40px, 8vw, 56px);
+        height: clamp(40px, 8vw, 56px);
+    }
 }
 
 /* Next Episode Loading Indicator */
@@ -211,21 +237,37 @@
     flex-direction: column;
     align-items: center;
     gap: 1.25rem;
+    /* Chrome 66 flex gap fallback */
+    -webkit-box-orient: vertical;
+}
+.next-episode-loading > * + * {
+    margin-top: 1.25rem;
+}
+@supports (gap: 1px) {
+    .next-episode-loading > * + * { margin-top: 0; }
 }
 
 .next-episode-loading .spinner-glass {
-    width: clamp(36px, 6vw, 48px);
-    height: clamp(36px, 6vw, 48px);
+    width: 42px;
+    height: 42px;
+}
+@supports (width: clamp(1px, 1vw, 1px)) {
+    .next-episode-loading .spinner-glass {
+        width: clamp(36px, 6vw, 48px);
+        height: clamp(36px, 6vw, 48px);
+    }
 }
 
 .next-episode-text {
     color: white;
-    font-size: clamp(1rem, 3vw, 1.25rem);
-    /* Increased size */
+    font-size: 1rem;
     font-weight: 600;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     letter-spacing: 0.05em;
     animation: pulse-text 2s ease-in-out infinite;
+}
+@supports (font-size: clamp(1rem, 1vw, 1rem)) {
+    .next-episode-text { font-size: clamp(1rem, 3vw, 1.25rem); }
 }
 
 @keyframes pulse-text {

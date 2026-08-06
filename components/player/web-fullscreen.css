@@ -18,15 +18,26 @@
 
 .kvideo-container.is-web-fullscreen.top-align-stage {
     align-items: flex-start !important;
-    padding-top: calc(env(safe-area-inset-top, 0px) + clamp(0px, 1.5vh, 16px)) !important;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 8px) !important;
+}
+@supports (padding-top: clamp(0px, 1vw, 1px)) {
+    .kvideo-container.is-web-fullscreen.top-align-stage {
+        padding-top: calc(env(safe-area-inset-top, 0px) + clamp(0px, 1.5vh, 16px)) !important;
+    }
 }
 
 .kvideo-container.is-web-fullscreen .kvideo-web-fullscreen-stage {
     position: relative !important;
-    width: min(calc(var(--kvideo-stage-viewport-width, var(--kvideo-viewport-width, 100vw)) * var(--kvideo-web-scale)), calc(var(--kvideo-stage-viewport-height, var(--kvideo-viewport-height, 100vh)) * var(--kvideo-web-scale) * 16 / 9)) !important;
-    height: min(calc(var(--kvideo-stage-viewport-height, var(--kvideo-viewport-height, 100vh)) * var(--kvideo-web-scale)), calc(var(--kvideo-stage-viewport-width, var(--kvideo-viewport-width, 100vw)) * var(--kvideo-web-scale) * 9 / 16)) !important;
+    width: 100vw !important;
+    height: calc(100vw * 9 / 16) !important;
     max-width: var(--kvideo-stage-viewport-width, var(--kvideo-viewport-width, 100vw)) !important;
     max-height: var(--kvideo-stage-viewport-height, var(--kvideo-viewport-height, 100vh)) !important;
+}
+@supports (width: min(1px, 1px)) {
+    .kvideo-container.is-web-fullscreen .kvideo-web-fullscreen-stage {
+        width: min(calc(var(--kvideo-stage-viewport-width, var(--kvideo-viewport-width, 100vw)) * var(--kvideo-web-scale)), calc(var(--kvideo-stage-viewport-height, var(--kvideo-viewport-height, 100vh)) * var(--kvideo-web-scale) * 16 / 9)) !important;
+        height: min(calc(var(--kvideo-stage-viewport-height, var(--kvideo-viewport-height, 100vh)) * var(--kvideo-web-scale)), calc(var(--kvideo-stage-viewport-width, var(--kvideo-viewport-width, 100vw)) * var(--kvideo-web-scale) * 9 / 16)) !important;
+    }
 }
 
 /* Ensure video takes up full space in web fullscreen */

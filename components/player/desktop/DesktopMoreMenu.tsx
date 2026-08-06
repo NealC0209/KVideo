@@ -308,14 +308,14 @@ export function DesktopMoreMenu({
                 <>
                     <button
                         onClick={() => onCopyLink('original')}
-                        className={`w-full ${isRotated ? 'px-2 py-1.5 text-[11px]' : 'px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm'} text-left text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_15%,transparent)] rounded-[var(--radius-2xl)] transition-colors flex items-center gap-2 group-hover:gap-3 cursor-pointer`}
+                        className={`w-full ${isRotated ? 'px-2 py-1.5 text-[11px]' : 'px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm'} text-left text-[var(--text-color)] hover:bg-[var(--glass-hover)] rounded-[var(--radius-2xl)] transition-colors flex items-center gap-2 group-hover:gap-3 cursor-pointer`}
                     >
                         <Icons.Link size={isRotated ? 14 : 16} className="sm:w-[18px] sm:h-[18px]" />
                         <span>复制原链接</span>
                     </button>
                     <button
                         onClick={() => onCopyLink('proxy')}
-                        className={`w-full ${isRotated ? 'px-2 py-1.5 text-[11px]' : 'px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm'} text-left text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_15%,transparent)] rounded-[var(--radius-2xl)] transition-colors flex items-center gap-2 mt-0.5 cursor-pointer`}
+                        className={`w-full ${isRotated ? 'px-2 py-1.5 text-[11px]' : 'px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm'} text-left text-[var(--text-color)] hover:bg-[var(--glass-hover)] rounded-[var(--radius-2xl)] transition-colors flex items-center gap-2 mt-0.5 cursor-pointer`}
                     >
                         <Icons.Link size={isRotated ? 14 : 16} className="sm:w-[18px] sm:h-[18px]" />
                         <span>复制代理链接</span>
@@ -324,7 +324,7 @@ export function DesktopMoreMenu({
             ) : (
                 <button
                     onClick={() => onCopyLink('original')}
-                    className={`w-full ${isRotated ? 'px-2 py-1.5 text-[11px]' : 'px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm'} text-left text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_15%,transparent)] rounded-[var(--radius-2xl)] transition-colors flex items-center gap-2 group-hover:gap-3 cursor-pointer`}
+                    className={`w-full ${isRotated ? 'px-2 py-1.5 text-[11px]' : 'px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm'} text-left text-[var(--text-color)] hover:bg-[var(--glass-hover)] rounded-[var(--radius-2xl)] transition-colors flex items-center gap-2 group-hover:gap-3 cursor-pointer`}
                 >
                     <Icons.Link size={isRotated ? 14 : 16} className="sm:w-[18px] sm:h-[18px]" />
                     <span>复制链接</span>
@@ -347,7 +347,7 @@ export function DesktopMoreMenu({
                             else if (fullscreenType === 'native') setFullscreenType('window');
                             else setFullscreenType('auto');
                         }}
-                        className={`flex items-center gap-1 bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] rounded-[var(--radius-2xl)] outline-none hover:border-[var(--accent-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_5%,transparent)] transition-all cursor-pointer whitespace-nowrap ${isRotated ? 'px-1.5 py-0.5 text-[9px]' : 'px-2 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs'}`}
+                        className={`flex items-center gap-1 bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] rounded-[var(--radius-2xl)] outline-none hover:border-[var(--accent-color)] hover:bg-[var(--glass-hover)] transition-all cursor-pointer whitespace-nowrap ${isRotated ? 'px-1.5 py-0.5 text-[9px]' : 'px-2 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs'}`}
                     >
                         <span>
                             {fullscreenType === 'auto' ? '自动 (Auto)' : fullscreenType === 'native' ? '系统全屏' : '网页全屏'}
@@ -364,7 +364,7 @@ export function DesktopMoreMenu({
                 </div>
                 <button
                     onClick={onCycleWebFullscreenSize}
-                    className={`flex items-center gap-1 bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] rounded-[var(--radius-2xl)] outline-none hover:border-[var(--accent-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_5%,transparent)] transition-all cursor-pointer whitespace-nowrap ${isRotated ? 'px-1.5 py-0.5 text-[9px]' : 'px-2 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs'}`}
+                    className={`flex items-center gap-1 bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] rounded-[var(--radius-2xl)] outline-none hover:border-[var(--accent-color)] hover:bg-[var(--glass-hover)] transition-all cursor-pointer whitespace-nowrap ${isRotated ? 'px-1.5 py-0.5 text-[9px]' : 'px-2 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs'}`}
                 >
                     <span>{WEB_FULLSCREEN_SIZE_LABELS[webFullscreenSize]}</span>
                     <Icons.ChevronDown size={isRotated ? 10 : 12} className="text-[var(--text-color-secondary)]" />
@@ -403,7 +403,7 @@ export function DesktopMoreMenu({
                 <div className="relative">
                     <button
                         onClick={() => setAdFilterOpen(!isAdFilterOpen)}
-                        className="flex items-center gap-1 sm:gap-1.5 bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] text-[10px] sm:text-xs rounded-[var(--radius-2xl)] px-2 sm:px-2.5 py-1 sm:py-1.5 outline-none hover:border-[var(--accent-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_5%,transparent)] transition-all cursor-pointer whitespace-nowrap"
+                        className="flex items-center gap-1 sm:gap-1.5 bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] text-[10px] sm:text-xs rounded-[var(--radius-2xl)] px-2 sm:px-2.5 py-1 sm:py-1.5 outline-none hover:border-[var(--accent-color)] hover:bg-[var(--glass-hover)] transition-all cursor-pointer whitespace-nowrap"
                     >
                         <span>{AD_FILTER_LABELS[adFilterMode] || '关闭'}</span>
                         <Icons.ChevronDown size={12} className={`text-[var(--text-color-secondary)] transition-transform duration-300 ${isAdFilterOpen ? 'rotate-180' : ''}`} />
@@ -420,7 +420,7 @@ export function DesktopMoreMenu({
                                             setAdFilterMode(mode as AdFilterMode);
                                             setAdFilterOpen(false);
                                         }}
-                                        className={`text-left text-[10px] sm:text-xs px-2 sm:px-3 py-1.5 sm:py-2 rounded-[var(--radius-2xl)] hover:bg-[color-mix(in_srgb,var(--accent-color)_15%,transparent)] transition-colors w-full flex items-center justify-between group ${adFilterMode === mode ? 'text-[var(--accent-color)] font-medium bg-[color-mix(in_srgb,var(--accent-color)_5%,transparent)]' : 'text-[var(--text-color)]'
+                                        className={`text-left text-[10px] sm:text-xs px-2 sm:px-3 py-1.5 sm:py-2 rounded-[var(--radius-2xl)] hover:bg-[var(--glass-hover)] transition-colors w-full flex items-center justify-between group ${adFilterMode === mode ? 'text-[var(--accent-color)] font-medium bg-[var(--glass-hover)]' : 'text-[var(--text-color)]'
                                             }`}
                                     >
                                         <span>{label}</span>
@@ -494,7 +494,7 @@ export function DesktopMoreMenu({
                                     onClick={() => setDanmakuFontSize(size)}
                                     className={`rounded-[var(--radius-2xl)] border font-medium transition-all duration-200 cursor-pointer ${isRotated ? 'px-1.5 py-0.5 text-[9px]' : 'px-2 py-0.5 text-[10px] sm:text-xs'} ${danmakuFontSize === size
                                         ? 'bg-[var(--accent-color)] border-[var(--accent-color)] text-white'
-                                        : 'bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_10%,transparent)]'
+                                        : 'bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-color)] hover:bg-[var(--glass-hover)]'
                                         }`}
                                 >
                                     {size}
@@ -518,7 +518,7 @@ export function DesktopMoreMenu({
                                     onClick={() => setDanmakuDisplayArea(value)}
                                     className={`rounded-[var(--radius-2xl)] border font-medium transition-all duration-200 cursor-pointer ${isRotated ? 'px-1.5 py-0.5 text-[9px]' : 'px-2 py-0.5 text-[10px] sm:text-xs'} ${danmakuDisplayArea === value
                                         ? 'bg-[var(--accent-color)] border-[var(--accent-color)] text-white'
-                                        : 'bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_10%,transparent)]'
+                                        : 'bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-color)] hover:bg-[var(--glass-hover)]'
                                         }`}
                                 >
                                     {label}

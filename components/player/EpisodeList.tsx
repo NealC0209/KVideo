@@ -441,13 +441,13 @@ export function EpisodeList({
                                     w-full p-2.5 rounded-[var(--radius-2xl)] text-left transition-all duration-200
                                     flex items-center gap-2.5
                                     ${isCurrent
-                                      ? 'bg-[var(--accent-color)] text-white shadow-[0_4px_12px_color-mix(in_srgb,var(--accent-color)_50%,transparent)]'
+                                      ? 'bg-[var(--accent-color)] text-white shadow-[0_4px_12px_rgba(0,0,0,0.4)]'
                                       : 'bg-[var(--glass-bg)] hover:bg-[var(--glass-hover)] text-[var(--text-color)] border border-[var(--glass-border)] cursor-pointer'
                                     }
                                   `}
                                   aria-current={isCurrent ? 'true' : undefined}
                                 >
-                                  <div className="w-10 h-14 rounded-[var(--radius-2xl)] overflow-hidden flex-shrink-0 bg-[color-mix(in_srgb,var(--glass-bg)_50%,transparent)]">
+                                  <div className="w-10 h-14 rounded-[var(--radius-2xl)] overflow-hidden flex-shrink-0 bg-[var(--glass-bg)]">
                                     <Image
                                       src={source.pic || '/placeholder-poster.svg'}
                                       alt=""
@@ -522,13 +522,13 @@ export function EpisodeList({
                                 w-full p-2.5 rounded-[var(--radius-2xl)] text-left transition-all duration-200
                                 flex items-center gap-2.5
                                 ${isCurrent
-                                  ? 'bg-[var(--accent-color)] text-white shadow-[0_4px_12px_color-mix(in_srgb,var(--accent-color)_50%,transparent)]'
+                                  ? 'bg-[var(--accent-color)] text-white shadow-[0_4px_12px_rgba(0,0,0,0.4)]'
                                   : 'bg-[var(--glass-bg)] hover:bg-[var(--glass-hover)] text-[var(--text-color)] border border-[var(--glass-border)] cursor-pointer'
                                 }
                               `}
                               aria-current={isCurrent ? 'true' : undefined}
                             >
-                              <div className="w-10 h-14 rounded-[var(--radius-2xl)] overflow-hidden flex-shrink-0 bg-[color-mix(in_srgb,var(--glass-bg)_50%,transparent)]">
+                              <div className="w-10 h-14 rounded-[var(--radius-2xl)] overflow-hidden flex-shrink-0 bg-[var(--glass-bg)]">
                                 <Image
                                   src={source.pic || '/placeholder-poster.svg'}
                                   alt=""
@@ -730,7 +730,7 @@ export function EpisodeList({
                         : 'w-full px-3 py-2 sm:px-4 sm:py-3 text-left'
                       }
                       ${isCurrentEpisode
-                        ? 'bg-[var(--accent-color)] text-white shadow-[0_4px_12px_color-mix(in_srgb,var(--accent-color)_50%,transparent)] brightness-110'
+                        ? 'bg-[var(--accent-color)] text-white shadow-[0_4px_12px_rgba(0,0,0,0.4)] brightness-110'
                         : 'bg-[var(--glass-bg)] hover:bg-[var(--glass-hover)] text-[var(--text-color)] border border-[var(--glass-border)]'
                       }
                       focus-visible:ring-2 focus-visible:ring-[var(--accent-color)] focus-visible:ring-offset-2

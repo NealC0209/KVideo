@@ -327,7 +327,7 @@ export function DesktopVideoPlayer({
 
   const stageClassName = data.fullscreenMode === 'window'
     ? 'kvideo-stage kvideo-web-fullscreen-stage'
-    : 'kvideo-stage absolute inset-0';
+    : 'kvideo-stage absolute top-0 left-0 right-0 bottom-0';
   const isTopAlignedWebFullscreen = data.fullscreenMode === 'window' && isMobile && !isLandscape && !shouldForceLandscape;
 
   // Mobile double-tap gesture for skip forward/backward
@@ -355,7 +355,7 @@ export function DesktopVideoPlayer({
   return (
     <div
       ref={containerRef}
-      className={`kvideo-container relative aspect-video bg-black group ${data.fullscreenMode === 'window' ? 'is-web-fullscreen' : ''
+      className={`kvideo-container bg-black group ${data.fullscreenMode === 'window' ? 'is-web-fullscreen' : ''
         } ${shouldForceLandscape ? 'force-landscape' : ''} ${isTopAlignedWebFullscreen ? 'top-align-stage' : ''} overflow-hidden rounded-none sm:rounded-[var(--radius-2xl)]`}
       style={containerStyle}
       onMouseMove={() => { handleMouseMove(); }}
@@ -363,9 +363,9 @@ export function DesktopVideoPlayer({
     >
       <div className={stageClassName}>
         {/* Clipping Wrapper for video and overlays - Restores the 'Liquid Glass' rounded look */}
-        <div className={`absolute inset-0 overflow-hidden pointer-events-none ${data.fullscreenMode === 'window' ? 'rounded-none' : 'rounded-none sm:rounded-[var(--radius-2xl)]'
+        <div className={`absolute top-0 left-0 right-0 bottom-0 overflow-hidden pointer-events-none ${data.fullscreenMode === 'window' ? 'rounded-none' : 'rounded-none sm:rounded-[var(--radius-2xl)]'
           }`}>
-          <div className="absolute inset-0 pointer-events-auto">
+          <div className="absolute top-0 left-0 right-0 bottom-0 pointer-events-auto">
           {/* Video Element */}
           <video
             ref={videoRef}

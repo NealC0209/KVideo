@@ -32,7 +32,7 @@ export function DesktopLeftControls({
     formatTime
 }: DesktopLeftControlsProps) {
     return (
-        <div className="player-controls-left flex min-w-0 flex-1 items-center gap-3">
+        <div className="player-controls-left flex min-w-0 flex-1 items-center space-x-3">
             {/* Play/Pause */}
             <button
                 onClick={onTogglePlay}

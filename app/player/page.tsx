@@ -480,9 +480,12 @@ function PlayerContent() {
                     poster={videoData.vod_pic}
                     type={videoData.type_name}
                     year={videoData.vod_year}
-                    sourceMap={Object.fromEntries(
-                      (groupedSources.length > 0 ? groupedSources : [{ id: videoId, source }]).map((item) => [item.source, item.id])
-                    )}
+                    sourceMap={(() => {
+                      const items = groupedSources.length > 0 ? groupedSources : [{ id: videoId, source }];
+                      const map: Record<string, string> = {};
+                      for (const item of items) { map[item.source] = item.id; }
+                      return map;
+                    })()}
                     size={20}
                     isPremium={isPremium}
                   />

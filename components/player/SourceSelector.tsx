@@ -132,7 +132,7 @@ export function SourceSelector({
                 w-full p-3 rounded-[var(--radius-2xl)] text-left transition-all duration-200
                 flex items-center gap-3
                 ${isCurrent
-                                    ? 'bg-[var(--accent-color)] text-white shadow-[0_4px_12px_color-mix(in_srgb,var(--accent-color)_50%,transparent)]'
+                                    ? 'bg-[var(--accent-color)] text-white shadow-[0_4px_12px_rgba(0,0,0,0.4)]'
                                     : 'bg-[var(--glass-bg)] hover:bg-[var(--glass-hover)] text-[var(--text-color)] border border-[var(--glass-border)] cursor-pointer'
                                 }
               `}
@@ -140,7 +140,7 @@ export function SourceSelector({
                         >
                             {/* Thumbnail */}
                             {source.pic && (
-                                <div className="w-12 h-16 rounded-[var(--radius-2xl)] overflow-hidden flex-shrink-0 bg-[color-mix(in_srgb,var(--glass-bg)_50%,transparent)]">
+                                <div className="w-12 h-16 rounded-[var(--radius-2xl)] overflow-hidden flex-shrink-0 bg-[var(--glass-bg)]">
                                     <Image
                                         src={source.pic}
                                         alt=""
