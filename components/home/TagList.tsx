@@ -116,7 +116,7 @@ export function TagList({
         >
             <div
                 ref={scrollContainerRef}
-                className={`mb-8 flex items-center gap-3 pb-3 pt-2 px-1 scrollbar-hide ${
+                className={`mb-8 flex items-center space-x-3 pb-3 pt-2 px-1 scrollbar-hide ${
                     showTagManager
                         ? 'flex-wrap overflow-visible'
                         : 'overflow-x-auto'
@@ -127,9 +127,10 @@ export function TagList({
                     <div className="relative flex-shrink-0">
                         <button
                             type="button"
+                            data-focusable
                             onClick={recommendTag.onSelect}
                             className={`
-                                px-6 py-2.5 text-sm font-semibold transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none flex items-center gap-1.5
+                                px-6 py-2.5 text-sm font-semibold transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none flex items-center space-x-1.5
                                 ${recommendTag.isSelected
                                     ? 'bg-[var(--accent-color)] text-white shadow-md scale-105'
                                     : 'bg-[var(--glass-bg)] backdrop-blur-xl text-[var(--text-color)] border border-[var(--glass-border)] hover:border-[var(--accent-color)] hover:scale-105'

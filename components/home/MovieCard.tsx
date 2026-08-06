@@ -83,7 +83,7 @@ export const MovieCard = memo(function MovieCard({ movie, onMovieClick }: MovieC
                 window.open(movie.url, '_blank', 'noopener,noreferrer');
               }}
               title="在豆瓣中查看"
-              className="absolute top-2 right-2 bg-black/80 hover:bg-black/90 px-2.5 py-1.5 flex items-center gap-1.5 rounded-[var(--radius-full)] z-20 hover:scale-105 transition-all shadow-md"
+              className="absolute top-2 right-2 bg-black/80 hover:bg-black/90 px-2.5 py-1.5 flex items-center space-x-1.5 rounded-[var(--radius-full)] z-20 hover:scale-105 transition-all shadow-md"
             >
               <Icons.Star size={12} className="text-yellow-400 fill-yellow-400" />
               <span className="text-xs font-bold text-white">

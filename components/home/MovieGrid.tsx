@@ -65,7 +65,7 @@ export function MovieGrid({
 function MovieGridLoading() {
   return (
     <div className="flex justify-center py-12">
-      <div className="flex flex-col items-center gap-3">
+      <div className="flex flex-col items-center space-y-3">
         <div className="animate-spin rounded-full h-12 w-12 border-4 border-[var(--accent-color)] border-t-transparent"></div>
         <p className="text-sm text-[var(--text-color-secondary)]">加载中...</p>
       </div>
