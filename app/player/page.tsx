@@ -483,7 +483,7 @@ function PlayerContent() {
                     sourceMap={(() => {
                       const items = groupedSources.length > 0 ? groupedSources : [{ id: videoId, source }];
                       const map: Record<string, string> = {};
-                      for (const item of items) { map[item.source] = item.id; }
+                      for (const item of items) { map[item.source] = String(item.id); }
                       return map;
                     })()}
                     size={20}
