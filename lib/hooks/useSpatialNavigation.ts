@@ -128,11 +128,13 @@ export function useSpatialNavigation(enabled: boolean) {
       const isAlreadyFocused = currentFocused && focusableElements.includes(currentFocused);
 
       if (!isAlreadyFocused) {
-        // Skip input/textarea for initial focus so the first arrow press
-        // lands on content items (cards, buttons) rather than the search box.
+        // Skip navbar and inputs on initial arrow press so Down lands on
+        // content (first tag / card) rather than the sticky nav or search box.
         const firstContent = focusableElements.find(el => {
           const tag = (el as HTMLElement).tagName;
-          return tag !== 'INPUT' && tag !== 'TEXTAREA';
+          if (tag === 'INPUT' || tag === 'TEXTAREA') return false;
+          if (el.closest('nav')) return false;
+          return true;
         });
         const firstEl = (firstContent || focusableElements[0]) as HTMLElement;
         firstEl.focus();

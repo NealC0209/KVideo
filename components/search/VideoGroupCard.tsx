@@ -116,7 +116,7 @@ export const VideoGroupCard = memo<VideoGroupCardProps>(({
                     }}
                 >
                     {/* Poster */}
-                    <div className="relative aspect-[2/3] bg-[color-mix(in_srgb,var(--glass-bg)_50%,transparent)] rounded-[var(--radius-2xl)] overflow-hidden">
+                    <div className="relative aspect-[2/3] bg-[var(--glass-bg)] rounded-[var(--radius-2xl)] overflow-hidden">
                         {representative.vod_pic ? (
                             <Image
                                 src={representative.vod_pic}
@@ -139,7 +139,7 @@ export const VideoGroupCard = memo<VideoGroupCardProps>(({
                         )}
 
                         {/* Fallback Icon - visible when image fails */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-center -z-10 space-y-2">
+                        <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center -z-10 space-y-2">
                             <Icons.Film size={48} className="text-[var(--text-color-secondary)] opacity-40" />
                             <span className="text-xs text-[var(--text-color-secondary)] opacity-60 px-2 text-center line-clamp-2">{name}</span>
                         </div>
@@ -177,7 +177,7 @@ export const VideoGroupCard = memo<VideoGroupCardProps>(({
 
                         {/* Overlay */}
                         <div
-                            className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${isActive ? 'opacity-100 lg:opacity-0 lg:group-hover:opacity-100' : 'opacity-0 lg:group-hover:opacity-100'
+                            className={`absolute top-0 left-0 right-0 bottom-0 bg-black/60 transition-opacity duration-300 ${isActive ? 'opacity-100 lg:opacity-0 lg:group-hover:opacity-100' : 'opacity-0 lg:group-hover:opacity-100'
                                 }`}
                             style={{
                                 willChange: 'opacity',

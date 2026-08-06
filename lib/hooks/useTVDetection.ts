@@ -35,12 +35,13 @@ export function useTVDetection(): boolean {
       return;
     }
 
-    // Fallback heuristic: large screen + no touch + low pixel density
-    const isLargeScreen = window.innerWidth >= 1280;
-    const hasNoTouch = !('ontouchstart' in window) && navigator.maxTouchPoints === 0;
+    // Fallback heuristic: large screen + no pointer touch (projector/TV)
+    // Use screen.width (not innerWidth) to avoid viewport scale issues on Android
+    const isLargeScreen = window.screen.width >= 1280;
+    const hasNoTouch = navigator.maxTouchPoints === 0;
     const lowDensity = window.devicePixelRatio <= 1.5;
 
-    if (isLargeScreen && hasNoTouch && lowDensity) {
+    if (isLargeScreen && (hasNoTouch || lowDensity)) {
       setIsTV(true);
     }
   }, []);

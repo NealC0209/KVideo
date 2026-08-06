@@ -33,6 +33,7 @@ export function PlayerNavbar({ isPremium }: { isPremium?: boolean }) {
                         <Button
                             variant="secondary"
                             onClick={() => router.back()}
+                            data-focusable
                             className="flex items-center gap-2"
                         >
                             <Icons.ChevronLeft size={20} />
