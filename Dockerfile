@@ -52,6 +52,9 @@ RUN set -ex && \
     echo "ERROR: Lockfile not found." && exit 1; \
   fi
 
+# Transpile client assets for Android 9 WebView (Chrome 66) compatibility
+RUN node scripts/transpile-client-assets.mjs .next/static
+
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
