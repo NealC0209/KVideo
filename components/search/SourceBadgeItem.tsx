@@ -1,4 +1,4 @@
-/**
+﻿/**
  * SourceBadgeItem - Individual source badge component
  * Displays a single video source badge with count, supports selection state
  */
@@ -46,7 +46,7 @@ export function SourceBadgeItem({
       aria-pressed={isSelected}
       aria-label={`${name} 视频源，${count} 个视频${isSelected ? '，已选中' : ''}`}
       className={`
-        inline-flex items-center gap-1.5 px-4 py-2
+        inline-flex items-center space-x-1.5 px-4 py-2
         rounded-full
         border-2
         text-sm font-medium whitespace-nowrap
@@ -73,3 +73,4 @@ export function SourceBadgeItem({
     </button>
   );
 }
+

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { AddSourceModal } from '@/components/settings/AddSourceModal';
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
@@ -59,7 +59,7 @@ export default function PremiumSettingsPage() {
                 {/* Custom Header for Premium Settings */}
                 <div className="bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] shadow-[var(--shadow-sm)] p-6">
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center space-x-4">
                             <Link
                                 href="/premium"
                                 className="w-10 h-10 flex items-center justify-center rounded-[var(--radius-full)] bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_10%,transparent)] transition-all duration-200 cursor-pointer"
@@ -152,3 +152,4 @@ export default function PremiumSettingsPage() {
         </AdminGate>
     );
 }
+

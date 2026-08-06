@@ -1,4 +1,4 @@
-import { useState, FormEvent, useEffect, useRef } from 'react';
+﻿import { useState, FormEvent, useEffect, useRef } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Icons } from '@/components/ui/Icon';
@@ -85,7 +85,7 @@ export function SearchBox({ onSearch, onClear, initialQuery = '', placeholder = 
                 data-focusable
             />
 
-            <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1 z-10">
+            <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-1 z-10">
                 {query && (
                     <button
                         type="button"
@@ -102,7 +102,7 @@ export function SearchBox({ onSearch, onClear, initialQuery = '', placeholder = 
                     variant="primary"
                     className="px-3 sm:px-4 md:px-6"
                 >
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center space-x-2">
                         <Icons.Search size={20} />
                         <span className="hidden sm:inline">搜索</span>
                     </span>
@@ -122,3 +122,4 @@ export function SearchBox({ onSearch, onClear, initialQuery = '', placeholder = 
         </form>
     );
 }
+

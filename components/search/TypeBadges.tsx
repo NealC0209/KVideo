@@ -1,4 +1,4 @@
-/**
+﻿/**
  * TypeBadges - Main component for type badge filtering
  * Auto-collects unique type_name values and shows counts
  * Badges disappear when all videos of that type are removed
@@ -39,8 +39,8 @@ export const TypeBadges = memo(function TypeBadges({
       hover={false}
       className={`p-4 animate-fade-in bg-[var(--bg-color)]/50 backdrop-blur-none saturate-100 shadow-sm border-[var(--glass-border)] ${className}`}
     >
-      <div className="flex items-start gap-3">
-        <div className="flex items-center gap-2 shrink-0 pt-1">
+      <div className="flex items-start space-x-3">
+        <div className="flex items-center space-x-2 shrink-0 pt-1">
           <Icons.Tag size={16} className="text-[var(--accent-color)]" />
           <span className="text-sm font-semibold text-[var(--text-color)]">
             分类标签 ({badges.length}):
@@ -59,7 +59,7 @@ export const TypeBadges = memo(function TypeBadges({
           <button
             onClick={handleClearAll}
             className="text-xs text-[var(--text-color-secondary)] hover:text-[var(--accent-color)] 
-                     flex items-center gap-1 transition-colors"
+                     flex items-center space-x-1 transition-colors"
           >
             <Icons.X size={12} />
             清除筛选 ({selectedTypes.size})
@@ -69,3 +69,4 @@ export const TypeBadges = memo(function TypeBadges({
     </Card>
   );
 });
+

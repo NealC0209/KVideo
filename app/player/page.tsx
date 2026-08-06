@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { Suspense, useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -421,7 +421,7 @@ function PlayerContent() {
         ) : (
           <div className="space-y-4">
             {/* Viewport controls span full content width so player + sidebar tops align */}
-            <div className="hidden lg:flex items-center justify-between gap-4 rounded-[var(--radius-2xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-4">
+            <div className="hidden lg:flex items-center justify-between space-x-4 rounded-[var(--radius-2xl)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-4">
               <div>
                 <div className="text-sm font-semibold text-[var(--text-color)]">
                   播放窗口大小
@@ -472,7 +472,7 @@ function PlayerContent() {
 
               {/* Favorite Button for current video */}
               {videoData && videoId && (
-                <div className="flex items-center gap-3 mt-4">
+                <div className="flex items-center space-x-3 mt-4">
                   <FavoriteButton
                     videoId={videoId}
                     source={source}
@@ -586,3 +586,4 @@ export default function PlayerPage() {
     </Suspense>
   );
 }
+

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Individual search history list item
  */
 
@@ -32,7 +32,7 @@ export function SearchHistoryListItem({
             }}
             tabIndex={0}
         >
-            <div className="flex items-center gap-3 flex-1 min-w-0">
+            <div className="flex items-center space-x-3 flex-1 min-w-0">
                 <Icons.Search
                     size={16}
                     className="flex-shrink-0 text-[var(--text-color-secondary)]"
@@ -62,3 +62,4 @@ export function SearchHistoryListItem({
         </div>
     );
 }
+

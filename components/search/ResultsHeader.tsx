@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { Badge } from '@/components/ui/Badge';
 import { Icons } from '@/components/ui/Icon';
@@ -16,15 +16,15 @@ export function ResultsHeader({
   availableSources,
 }: ResultsHeaderProps) {
   return (
-    <div className="flex flex-col gap-4 mb-6">
-      <div className="flex items-center justify-between flex-wrap gap-3">
-        <h3 className="text-2xl font-bold text-[var(--text-color)] flex items-center gap-3">
+    <div className="flex flex-col space-y-4 mb-6">
+      <div className="flex items-center justify-between flex-wrap space-x-3">
+        <h3 className="text-2xl font-bold text-[var(--text-color)] flex items-center space-x-3">
           <span>搜索结果</span>
         </h3>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center space-x-3">
           {loading && (
             <Badge variant="secondary" className="text-sm">
-              <span className="flex items-center gap-2">
+              <span className="flex items-center space-x-2">
                 <Icons.Search size={14} />
                 搜索中...
               </span>
@@ -38,3 +38,4 @@ export function ResultsHeader({
     </div>
   );
 }
+

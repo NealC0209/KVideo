@@ -1,4 +1,4 @@
-/**
+﻿/**
  * SourceBadgeList - Badge list container with responsive layout
  * Desktop: Expandable grid with show more/less
  * Mobile: Horizontal scroll with snap
@@ -113,11 +113,11 @@ export function SourceBadgeList({ sources, selectedSources, onToggleSource }: So
           }`}>
           <div
             ref={badgeContainerRef}
-            className="flex items-center gap-2 flex-wrap p-1"
+            className="flex items-center space-x-2 flex-wrap p-1"
           >
             {typeGroups ? (
               Array.from(typeGroups.entries()).map(([typeName, typeSources]) => (
-                <div key={typeName || '__default'} className="flex items-center gap-2 flex-wrap">
+                <div key={typeName || '__default'} className="flex items-center space-x-2 flex-wrap">
                   {typeName && (
                     <span className="text-[10px] font-medium text-[var(--text-color-secondary)] uppercase tracking-wider px-1 select-none">
                       {typeName}:
@@ -164,7 +164,7 @@ export function SourceBadgeList({ sources, selectedSources, onToggleSource }: So
             type="button"
             onClick={toggleExpanded}
             className="mt-2 text-xs text-[var(--text-color-secondary)] hover:text-[var(--accent-color)]
-                     flex items-center gap-1 transition-colors self-start cursor-pointer"
+                     flex items-center space-x-1 transition-colors self-start cursor-pointer"
           >
             <span>{isExpanded ? '收起' : '展开更多'}</span>
             <Icons.ChevronDown
@@ -183,7 +183,7 @@ export function SourceBadgeList({ sources, selectedSources, onToggleSource }: So
       >
         <div
           ref={containerRef}
-          className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory"
+          className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory"
         >
           {sources.map((source, index) => (
             <SourceBadgeItem
@@ -203,3 +203,4 @@ export function SourceBadgeList({ sources, selectedSources, onToggleSource }: So
     </>
   );
 }
+

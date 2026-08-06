@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef } from 'react';
 import { Button } from './Button';
@@ -108,7 +108,7 @@ export function ConfirmDialog({
           </p>
 
           {/* Actions */}
-          <div className="flex gap-3 justify-end">
+          <div className="flex space-x-3 justify-end">
             <Button
               ref={cancelButtonRef}
               variant="secondary"
@@ -129,3 +129,4 @@ export function ConfirmDialog({
     </>
   );
 }
+

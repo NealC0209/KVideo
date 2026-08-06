@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 /**
  * VideoGroupCard - Displays grouped videos with same name as single card
@@ -139,13 +139,13 @@ export const VideoGroupCard = memo<VideoGroupCardProps>(({
                         )}
 
                         {/* Fallback Icon - visible when image fails */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-center -z-10 gap-2">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center -z-10 space-y-2">
                             <Icons.Film size={48} className="text-[var(--text-color-secondary)] opacity-40" />
                             <span className="text-xs text-[var(--text-color-secondary)] opacity-60 px-2 text-center line-clamp-2">{name}</span>
                         </div>
 
                         {/* Badge Container */}
-                        <div className="absolute top-2 left-2 right-2 z-10 flex items-center justify-between gap-1">
+                        <div className="absolute top-2 left-2 right-2 z-10 flex items-center justify-between space-x-1">
                             {/* Source count badge */}
                             <Badge variant="primary" className="bg-[var(--accent-color)] flex-shrink-0">
                                 <Icons.Layers size={12} className="mr-1" />
@@ -195,7 +195,7 @@ export const VideoGroupCard = memo<VideoGroupCardProps>(({
                                     </Badge>
                                 )}
                                 {representative.vod_year && (
-                                    <div className="flex items-center gap-1 text-white/80 text-xs">
+                                    <div className="flex items-center space-x-1 text-white/80 text-xs">
                                         <Icons.Calendar size={12} />
                                         <span>{representative.vod_year}</span>
                                     </div>
@@ -214,7 +214,7 @@ export const VideoGroupCard = memo<VideoGroupCardProps>(({
                                     <h4 className="font-semibold text-sm text-[var(--text-color)] line-clamp-2 min-h-[2.5rem] mb-1">
                                         {cleanTitle}
                                     </h4>
-                                    <div className="flex items-center gap-1.5 flex-wrap">
+                                    <div className="flex items-center space-x-1.5 flex-wrap">
                                         {resolution ? (
                                             <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold text-white ${resolution.color}`}>
                                                 {resolution.label}
@@ -241,3 +241,4 @@ export const VideoGroupCard = memo<VideoGroupCardProps>(({
 });
 
 VideoGroupCard.displayName = 'VideoGroupCard';
+

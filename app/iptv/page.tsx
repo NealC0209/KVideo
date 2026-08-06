@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 /**
  * IPTV Page - Live TV channel viewer with M3U source management
@@ -93,7 +93,7 @@ export default function IPTVPage() {
           {/* Header */}
           <div className="bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] shadow-[var(--shadow-sm)] p-6 mb-6">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center space-x-4">
                 <Link
                   href="/"
                   className="w-10 h-10 flex items-center justify-center rounded-[var(--radius-full)] bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_10%,transparent)] transition-all duration-200 cursor-pointer"
@@ -104,7 +104,7 @@ export default function IPTVPage() {
                   </svg>
                 </Link>
                 <div>
-                  <h1 className="text-2xl font-bold text-[var(--text-color)] flex items-center gap-2">
+                  <h1 className="text-2xl font-bold text-[var(--text-color)] flex items-center space-x-2">
                     <Icons.TV size={24} className="text-[var(--accent-color)]" />
                     直播
                   </h1>
@@ -117,7 +117,7 @@ export default function IPTVPage() {
               {canManageSources && (
                 <button
                   onClick={() => setShowManager(!showManager)}
-                  className="flex items-center gap-1.5 px-4 py-2 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] text-sm text-[var(--text-color)] hover:border-[var(--accent-color)]/30 transition-all cursor-pointer"
+                  className="flex items-center space-x-1.5 px-4 py-2 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] text-sm text-[var(--text-color)] hover:border-[var(--accent-color)]/30 transition-all cursor-pointer"
                 >
                   <Icons.Settings size={16} />
                   管理源
@@ -170,3 +170,4 @@ export default function IPTVPage() {
       </div>
   );
 }
+

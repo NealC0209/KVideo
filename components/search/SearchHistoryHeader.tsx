@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Header for search history dropdown
  */
 
@@ -11,7 +11,7 @@ interface SearchHistoryHeaderProps {
 export function SearchHistoryHeader({ onClearAll }: SearchHistoryHeaderProps) {
     return (
         <div className="search-history-header">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center space-x-2">
                 <Icons.Clock size={16} className="text-[var(--text-color-secondary)]" />
                 <span className="text-sm font-medium text-[var(--text-color-secondary)]">
                     搜索历史
@@ -31,3 +31,4 @@ export function SearchHistoryHeader({ onClearAll }: SearchHistoryHeaderProps) {
         </div>
     );
 }
+

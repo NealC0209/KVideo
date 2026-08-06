@@ -1,4 +1,4 @@
-/**
+﻿/**
  * TypeBadgeList - Badge list container with responsive layout
  * Desktop: Expandable grid with show more/less
  * Mobile: Horizontal scroll with snap
@@ -98,7 +98,7 @@ export function TypeBadgeList({ badges, selectedTypes, onToggleType }: TypeBadge
           }`}>
           <div
             ref={badgeContainerRef}
-            className="flex items-center gap-2 flex-wrap p-1"
+            className="flex items-center space-x-2 flex-wrap p-1"
           >
             {badges.map((badge, index) => (
               <TypeBadgeItem
@@ -119,7 +119,7 @@ export function TypeBadgeList({ badges, selectedTypes, onToggleType }: TypeBadge
             type="button"
             onClick={toggleExpanded}
             className="mt-2 text-xs text-[var(--text-color-secondary)] hover:text-[var(--accent-color)]
-                     flex items-center gap-1 transition-colors self-start cursor-pointer"
+                     flex items-center space-x-1 transition-colors self-start cursor-pointer"
           >
             <span>{isExpanded ? '收起' : '展开更多'}</span>
             <Icons.ChevronDown
@@ -138,7 +138,7 @@ export function TypeBadgeList({ badges, selectedTypes, onToggleType }: TypeBadge
       >
         <div
           ref={containerRef}
-          className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory"
+          className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory"
         >
           {badges.map((badge, index) => (
             <TypeBadgeItem
@@ -157,3 +157,4 @@ export function TypeBadgeList({ badges, selectedTypes, onToggleType }: TypeBadge
     </>
   );
 }
+

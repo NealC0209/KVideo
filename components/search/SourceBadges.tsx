@@ -1,4 +1,4 @@
-/**
+﻿/**
  * SourceBadges - Clickable video source badges with filtering
  * Shows available video sources with counts
  * Click to filter videos by source
@@ -39,8 +39,8 @@ export const SourceBadges = memo(function SourceBadges({
       hover={false}
       className={`p-4 animate-fade-in bg-[var(--bg-color)]/50 backdrop-blur-none saturate-100 shadow-sm border-[var(--glass-border)] ${className}`}
     >
-      <div className="flex items-start gap-3">
-        <div className="flex items-center gap-2 shrink-0 pt-1">
+      <div className="flex items-start space-x-3">
+        <div className="flex items-center space-x-2 shrink-0 pt-1">
           <Icons.Globe size={16} className="text-[var(--accent-color)]" />
           <span className="text-sm font-semibold text-[var(--text-color)]">
             视频源 ({sources.length}):
@@ -59,7 +59,7 @@ export const SourceBadges = memo(function SourceBadges({
           <button
             onClick={handleClearAll}
             className="text-xs text-[var(--text-color-secondary)] hover:text-[var(--accent-color)] 
-                     flex items-center gap-1 transition-colors"
+                     flex items-center space-x-1 transition-colors"
           >
             <Icons.X size={12} />
             清除筛选 ({selectedSources.size})
@@ -69,3 +69,4 @@ export const SourceBadges = memo(function SourceBadges({
     </Card>
   );
 });
+

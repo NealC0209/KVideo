@@ -1,4 +1,4 @@
-/**
+﻿/**
  * TypeBadgeItem - Individual badge component
  * Displays a single type badge with count, supports selection state
  */
@@ -44,7 +44,7 @@ export function TypeBadgeItem({
       aria-pressed={isSelected}
       aria-label={`${type} 类型，${count} 个视频${isSelected ? '，已选中' : ''}`}
       className={`
-        inline-flex items-center gap-1.5 px-4 py-2
+        inline-flex items-center space-x-1.5 px-4 py-2
         rounded-full
         border-2
         text-sm font-medium whitespace-nowrap
@@ -71,3 +71,4 @@ export function TypeBadgeItem({
     </button>
   );
 }
+

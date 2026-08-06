@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { memo } from 'react';
 import Link from 'next/link';
@@ -98,14 +98,14 @@ export const VideoCard = memo<VideoCardProps>(({
                         )}
 
                         {/* Fallback Icon - visible when image fails completely */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-center -z-10 gap-2">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center -z-10 space-y-2">
                             <Icons.Film size={48} className="text-[var(--text-color-secondary)] opacity-40" />
                             <span className="text-xs text-[var(--text-color-secondary)] opacity-60 px-2 text-center line-clamp-2">{video.vod_name}</span>
                         </div>
 
                         {/* Badge Container */}
-                        <div className="absolute top-2 left-2 right-2 z-10 flex items-center justify-between gap-1">
-                            <div className="flex items-center gap-1 min-w-0">
+                        <div className="absolute top-2 left-2 right-2 z-10 flex items-center justify-between space-x-1">
+                            <div className="flex items-center space-x-1 min-w-0">
                                 {video.sourceName && (
                                     <Badge variant="primary" className="bg-[var(--accent-color)] flex-shrink-0 max-w-[100%] truncate">
                                         {video.sourceName}
@@ -152,7 +152,7 @@ export const VideoCard = memo<VideoCardProps>(({
                                     </Badge>
                                 )}
                                 {video.vod_year && (
-                                    <div className="flex items-center gap-1 text-white/80 text-xs">
+                                    <div className="flex items-center space-x-1 text-white/80 text-xs">
                                         <Icons.Calendar size={12} />
                                         <span>{video.vod_year}</span>
                                     </div>
@@ -171,7 +171,7 @@ export const VideoCard = memo<VideoCardProps>(({
                                     <h4 className="font-semibold text-sm text-[var(--text-color)] line-clamp-2 min-h-[2.5rem] mb-1">
                                         {cleanTitle}
                                     </h4>
-                                    <div className="flex items-center gap-1.5 flex-wrap">
+                                    <div className="flex items-center space-x-1.5 flex-wrap">
                                         {resolution ? (
                                             <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold text-white ${resolution.color}`}>
                                                 {resolution.label}
@@ -201,4 +201,5 @@ export const VideoCard = memo<VideoCardProps>(({
 });
 
 VideoCard.displayName = 'VideoCard';
+
 
