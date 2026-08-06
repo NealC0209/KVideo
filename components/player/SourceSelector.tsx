@@ -126,6 +126,7 @@ export function SourceSelector({
                     return (
                         <button
                             key={`${source.source}-${index}`}
+                            data-focusable
                             onClick={() => !isCurrent && onSourceChange(source)}
                             className={`
                 w-full p-3 rounded-[var(--radius-2xl)] text-left transition-all duration-200

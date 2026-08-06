@@ -55,6 +55,9 @@ export function useDesktopShortcuts({
                 }, 3000);
             }
 
+            // In TV mode (D-pad), let spatial navigation handle arrow keys
+            const isTVMode = document.body.classList.contains('tv-mode');
+
             switch (e.key.toLowerCase()) {
                 case ' ':
                 case 'k':
@@ -80,16 +83,25 @@ export function useDesktopShortcuts({
                     }
                     break;
                 case 'arrowright':
+                    if (isTVMode) break;
+                    e.preventDefault();
+                    skipForward();
+                    break;
                 case 'l':
                     e.preventDefault();
                     skipForward();
                     break;
                 case 'arrowleft':
+                    if (isTVMode) break;
+                    e.preventDefault();
+                    skipBackward();
+                    break;
                 case 'j':
                     e.preventDefault();
                     skipBackward();
                     break;
                 case 'arrowup':
+                    if (isTVMode) break;
                     e.preventDefault();
                     const newVolUp = Math.min(1, volume + 0.1);
                     setVolume(newVolUp);
@@ -103,6 +115,7 @@ export function useDesktopShortcuts({
                     showVolumeBarTemporarily();
                     break;
                 case 'arrowdown':
+                    if (isTVMode) break;
                     e.preventDefault();
                     const newVolDown = Math.max(0, volume - 0.1);
                     setVolume(newVolDown);

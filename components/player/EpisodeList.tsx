@@ -327,6 +327,7 @@ export function EpisodeList({
             </div>
             <button
               onClick={() => onSourceSectionCollapseChange?.(!sourceSectionCollapsed)}
+              data-focusable
               className="ml-auto p-1.5 rounded-[var(--radius-2xl)] bg-[var(--glass-bg)] text-[var(--text-color-secondary)] hover:bg-[var(--glass-hover)] border border-[var(--glass-border)] transition-all duration-200 cursor-pointer"
               aria-label={sourceSectionCollapsed ? '展开源列表' : '折叠源列表'}
               title={sourceSectionCollapsed ? '展开源列表' : '折叠源列表'}
@@ -346,6 +347,7 @@ export function EpisodeList({
                     setSourceExpanded((current) => !current);
                   }
                 }}
+                data-focusable
                 className={`flex-1 min-w-0 flex items-center justify-between gap-3 text-left ${sourceSectionCollapsed ? 'cursor-default' : 'cursor-pointer'}`}
               >
                 <div className="flex items-center gap-2 min-w-0">
@@ -428,6 +430,7 @@ export function EpisodeList({
                                 <button
                                   key={`${source.source}-${index}`}
                                   ref={(element) => { sourceItemRefs.current[source.source] = element; }}
+                                  data-focusable
                                   onClick={() => {
                                     if (!isCurrent) {
                                       onSourceChange!(source);
@@ -508,6 +511,7 @@ export function EpisodeList({
                             <button
                               key={`${source.source}-${index}`}
                               ref={(element) => { sourceItemRefs.current[source.source] = element; }}
+                              data-focusable
                               onClick={() => {
                                 if (!isCurrent) {
                                   onSourceChange!(source);
@@ -581,6 +585,7 @@ export function EpisodeList({
                     {hasMoreSources && (
                       <button
                         onClick={() => setShowAllSources((current) => !current)}
+                        data-focusable
                         className="w-full mt-1.5 py-1.5 text-xs text-[var(--text-color-secondary)] hover:text-[var(--accent-color)] flex items-center justify-center gap-1 transition-colors cursor-pointer"
                       >
                         {showAllVisibleSources ? (
