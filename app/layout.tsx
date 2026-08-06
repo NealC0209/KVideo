@@ -92,6 +92,21 @@ export default async function RootLayout({
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
+        {/* Chrome 66 / Android 9 WebView polyfills */}
+        <script dangerouslySetInnerHTML={{ __html: `
+(function(){
+  if(!Promise.allSettled)Promise.allSettled=function(ps){return Promise.all(ps.map(function(p){return Promise.resolve(p).then(function(v){return{status:'fulfilled',value:v}},function(r){return{status:'rejected',reason:r}})}))};
+  if(!Promise.any)Promise.any=function(ps){return new Promise(function(res,rej){var e=[],n=0;ps=ps.map(function(p){return Promise.resolve(p)});n=ps.length;if(!n)rej(new AggregateError([],'All promises were rejected'));ps.forEach(function(p,i){p.then(res,function(r){e[i]=r;if(--n===0)rej(new AggregateError(e,'All promises were rejected'))})})})};
+  if(!Array.prototype.flat)Array.prototype.flat=function(d){d=d===undefined?1:d;return this.reduce(function(a,v){return a.concat(d>0&&Array.isArray(v)?v.flat(d-1):v)},[])};
+  if(!Array.prototype.flatMap)Array.prototype.flatMap=function(f,t){return this.map(f,t).flat(1)};
+  if(!Object.fromEntries)Object.fromEntries=function(it){var o={};for(var e of it)o[e[0]]=e[1];return o};
+  if(!globalThis)window.globalThis=window;
+  if(typeof queueMicrotask==='undefined')window.queueMicrotask=function(fn){Promise.resolve().then(fn)};
+  if(!Array.prototype.at){Array.prototype.at=function(i){i=Math.trunc(i)||0;if(i<0)i+=this.length;if(i<0||i>=this.length)return undefined;return this[i]}}
+  if(!String.prototype.at){String.prototype.at=function(i){i=Math.trunc(i)||0;if(i<0)i+=this.length;if(i<0||i>=this.length)return undefined;return this[i]}}
+  if(!structuredClone)window.structuredClone=function(v){return JSON.parse(JSON.stringify(v))};
+})();
+        ` }} />
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
         {/* Apple PWA Support */}
