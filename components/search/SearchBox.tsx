@@ -5,6 +5,7 @@ import { Icons } from '@/components/ui/Icon';
 import { SearchHistoryDropdown } from '@/components/search/SearchHistoryDropdown';
 import { useSearchHistory } from '@/lib/hooks/useSearchHistory';
 import { useSearchBoxHandlers } from './hooks/useSearchBoxHandlers';
+import { useIsTV } from '@/lib/contexts/TVContext';
 
 interface SearchBoxProps {
     onSearch: (query: string) => void;
@@ -17,6 +18,7 @@ interface SearchBoxProps {
 export function SearchBox({ onSearch, onClear, initialQuery = '', placeholder = '搜索电影、电视剧、综艺...', isPremium = false }: SearchBoxProps) {
     const [query, setQuery] = useState(initialQuery);
     const inputRef = useRef<HTMLInputElement>(null);
+    const isTV = useIsTV();
 
     // Search history hook
     const {
@@ -83,6 +85,7 @@ export function SearchBox({ onSearch, onClear, initialQuery = '', placeholder = 
                 aria-controls="search-history-dropdown"
                 aria-autocomplete="list"
                 data-focusable
+                tabIndex={isTV ? -1 : undefined}
             />
 
             <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-1 z-10">

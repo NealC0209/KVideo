@@ -56,6 +56,8 @@ export function useSearchBoxHandlers({
     };
 
     const handleInputFocus = () => {
+        // In TV mode, D-pad focus lands here accidentally — don't open history dropdown
+        if (document.body.classList.contains('tv-mode')) return;
         showDropdown();
     };
 
