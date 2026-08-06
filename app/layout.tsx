@@ -104,7 +104,7 @@ export default async function RootLayout({
   if(typeof queueMicrotask==='undefined')window.queueMicrotask=function(fn){Promise.resolve().then(fn)};
   if(!Array.prototype.at){Array.prototype.at=function(i){i=Math.trunc(i)||0;if(i<0)i+=this.length;if(i<0||i>=this.length)return undefined;return this[i]}}
   if(!String.prototype.at){String.prototype.at=function(i){i=Math.trunc(i)||0;if(i<0)i+=this.length;if(i<0||i>=this.length)return undefined;return this[i]}}
-  if(!structuredClone)window.structuredClone=function(v){return JSON.parse(JSON.stringify(v))};
+  if(typeof structuredClone==='undefined')window.structuredClone=function(v){return JSON.parse(JSON.stringify(v))};
 })();
         ` }} />
         {/* PWA Manifest */}
