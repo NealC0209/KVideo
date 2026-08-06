@@ -91,7 +91,7 @@ function getEnvSubscriptions(customValue?: string): SourceSubscription[] {
     if (Array.isArray(raw)) {
       return raw
         .filter((item: any) => item && typeof item.name === 'string' && typeof item.url === 'string')
-        .map((item: any) => createSubscription(item.name, item.url));
+        .map((item: any) => ({ ...createSubscription(item.name, item.url), ...(item.group ? { group: item.group } : {}) }));
     }
   } catch (e) {
     // Ignore JSON parse error, try direct URL
