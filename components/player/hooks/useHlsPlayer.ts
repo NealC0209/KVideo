@@ -45,30 +45,36 @@ export function useHlsPlayer({
         // Check if MSE is available (required by HLS.js)
         const isMSESupported = Hls.isSupported();
 
-        // Detect Chrome 66 / legacy Android WebView: Chrome MSE has a hard bug where
-        // B-frame H.264 streams cause "negative DTS after timestampOffset" which cannot
-        // be recovered. Bypass HLS.js entirely — Android's native media player handles
-        // m3u8 via the system ExoPlayer stack without going through Chrome MSE.
+        // Detect Chrome 66 / legacy Android WebView
         const chromeMatch = navigator.userAgent.match(/Chrome\/(\d+)/);
         const chromeMajor = chromeMatch ? parseInt(chromeMatch[1], 10) : 999;
         const isLegacyChrome = chromeMajor < 73;
 
-        if (isLegacyChrome) {
-            // Native fallback: let Android system player handle m3u8 directly
-            video.src = src;
-            if (autoPlay) {
-                video.play().catch((err) => {
-                    onAutoPlayPrevented?.(err);
-                });
-            }
-            // Error event for unsupported streams
-            const handleError = () => {
-                onError?.('视频加载失败，请尝试其他线路');
-            };
-            video.addEventListener('error', handleError, { once: true });
-            return () => {
-                video.removeEventListener('error', handleError);
-                video.src = '';
+        // Chrome 66 MSE timestampOffset fix:
+        // HLS.js sets timestampOffset = -PTS to normalize the first frame to t=0.
+        // But for B-frame streams where DTS < PTS, this makes DTS negative.
+        // Chrome 66 hard-rejects any MSE append with DTS < 0.
+        // Fix: patch addSourceBuffer so each SourceBuffer's timestampOffset setter
+        // adds a 100ms safety margin when the value is negative, ensuring DTS stays ≥ 0.
+        if (isLegacyChrome && typeof MediaSource !== 'undefined') {
+            const B_FRAME_SAFETY = 0.1; // 100ms > any typical B-frame DTS offset
+            const origAddSB = MediaSource.prototype.addSourceBuffer;
+            MediaSource.prototype.addSourceBuffer = function(mimeType: string) {
+                const sb = origAddSB.call(this, mimeType);
+                const proto = Object.getOwnPropertyDescriptor(SourceBuffer.prototype, 'timestampOffset');
+                if (proto?.set) {
+                    let _off = 0;
+                    Object.defineProperty(sb, 'timestampOffset', {
+                        get() { return _off; },
+                        set(v: number) {
+                            _off = v < 0 ? v + B_FRAME_SAFETY : v;
+                            try { proto.set!.call(sb, _off); } catch (_) { /* ignore */ }
+                        },
+                        configurable: true,
+                        enumerable: true,
+                    });
+                }
+                return sb;
             };
         }
 
