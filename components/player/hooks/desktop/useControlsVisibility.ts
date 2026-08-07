@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useMemo } from 'react';
+import { useEffect, useCallback, useMemo, useRef } from 'react';
 
 interface UseControlsVisibilityProps {
     isPlaying: boolean;
@@ -25,12 +25,20 @@ export function useControlsVisibility({
     speedMenuTimeoutRef,
     mouseMoveThrottleRef
 }: UseControlsVisibilityProps) {
+    // Track whether a real mouse has ever moved. Zero = never moved = TV remote mode.
+    const lastMouseMoveRef = useRef(0);
+
     // Shared hide controls logic
     const hideControls = useCallback(() => {
         if (controlsTimeoutRef.current) {
             clearTimeout(controlsTimeoutRef.current);
         }
         controlsTimeoutRef.current = setTimeout(() => {
+            // TV remote mode: if mouse has never moved, keep controls permanently visible.
+            // If mouse moved but went idle > 5s ago, also keep visible (user switched to remote).
+            const mouseIdle = lastMouseMoveRef.current === 0 ||
+                Date.now() - lastMouseMoveRef.current > 5000;
+            if (mouseIdle) return;
             if (isPlaying && !showSpeedMenu && !showMoreMenu) {
                 setShowControls(false);
             }
@@ -73,6 +81,8 @@ export function useControlsVisibility({
         mouseMoveThrottleRef.current = setTimeout(() => {
             mouseMoveThrottleRef.current = null;
         }, 200);
+
+        lastMouseMoveRef.current = Date.now();
 
         if (!showControls) {
             setShowControls(true);

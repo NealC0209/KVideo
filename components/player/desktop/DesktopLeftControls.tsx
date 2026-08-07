@@ -35,6 +35,7 @@ export function DesktopLeftControls({
         <div className="player-controls-left flex min-w-0 flex-1 items-center space-x-3">
             {/* Play/Pause */}
             <button
+                data-focusable
                 onClick={onTogglePlay}
                 className="btn-icon shrink-0"
                 aria-label={isPlaying ? 'Pause' : 'Play'}

@@ -24,6 +24,7 @@ export function DesktopVolumeControl({
     return (
         <div className="flex items-center gap-2 group/volume">
             <button
+                data-focusable
                 onClick={onToggleMute}
                 className="btn-icon"
                 aria-label={isMuted ? 'Unmute' : 'Mute'}

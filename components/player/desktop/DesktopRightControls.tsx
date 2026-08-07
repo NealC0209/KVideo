@@ -74,6 +74,7 @@ export function DesktopRightControls({
 
             {/* Web Fullscreen */}
             <button
+                data-focusable
                 onClick={onToggleWebFullscreen}
                 className="btn-icon shrink-0"
                 aria-label={isWebFullscreen ? '退出网页全屏' : '网页全屏'}
@@ -86,6 +87,7 @@ export function DesktopRightControls({
 
             {/* Native Fullscreen */}
             <button
+                data-focusable
                 onClick={onToggleNativeFullscreen}
                 className="btn-icon shrink-0"
                 aria-label={isNativeFullscreen ? '退出系统全屏' : '系统全屏'}
