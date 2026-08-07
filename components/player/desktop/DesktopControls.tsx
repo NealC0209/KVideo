@@ -14,8 +14,6 @@ interface DesktopControlsProps {
     isFullscreen: boolean;
     isNativeFullscreen: boolean;
     isWebFullscreen: boolean;
-
-
     showVolumeBar: boolean;
     isPiPSupported: boolean;
     isAirPlaySupported: boolean;
@@ -37,6 +35,7 @@ interface DesktopControlsProps {
     onProgressMouseDown: (e: React.MouseEvent<HTMLDivElement>) => void;
     onProgressTouchStart: (e: React.TouchEvent<HTMLDivElement>) => void;
     formatTime: (seconds: number) => string;
+    onShowControls?: () => void;
 }
 
 export function DesktopControls(props: DesktopControlsProps) {
@@ -50,6 +49,7 @@ export function DesktopControls(props: DesktopControlsProps) {
         onProgressMouseDown,
         onProgressTouchStart,
         formatTime,
+        onShowControls,
     } = props;
 
     return (
@@ -58,8 +58,8 @@ export function DesktopControls(props: DesktopControlsProps) {
                 }`}
             style={{
                 pointerEvents: showControls ? 'auto' : 'none',
-                visibility: showControls ? 'visible' : 'hidden',
             }}
+            onFocus={onShowControls}
         >
             {/* Progress Bar */}
             <DesktopProgressBar

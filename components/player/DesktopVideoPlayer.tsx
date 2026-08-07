@@ -355,11 +355,14 @@ export function DesktopVideoPlayer({
   return (
     <div
       ref={containerRef}
+      data-focusable
+      tabIndex={0}
       className={`kvideo-container bg-black group ${data.fullscreenMode === 'window' ? 'is-web-fullscreen' : ''
         } ${shouldForceLandscape ? 'force-landscape' : ''} ${isTopAlignedWebFullscreen ? 'top-align-stage' : ''} overflow-hidden rounded-none sm:rounded-[var(--radius-2xl)]`}
       style={containerStyle}
       onMouseMove={() => { handleMouseMove(); }}
       onMouseLeave={() => isPlaying && setShowControls(false)}
+      onKeyDown={() => { handleMouseMove(); }}
     >
       <div className={stageClassName}>
         {/* Clipping Wrapper for video and overlays - Restores the 'Liquid Glass' rounded look */}

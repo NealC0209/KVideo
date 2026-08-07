@@ -42,6 +42,7 @@ export function DesktopControlsWrapper({ src, data, logic, refs }: DesktopContro
         handleProgressMouseDown,
         handleProgressTouchStart,
         formatTime,
+        handleMouseMove,
     } = logic;
 
     const {
@@ -84,6 +85,7 @@ export function DesktopControlsWrapper({ src, data, logic, refs }: DesktopContro
             onProgressMouseDown={handleProgressMouseDown}
             onProgressTouchStart={handleProgressTouchStart}
             formatTime={formatTime}
+            onShowControls={handleMouseMove}
         />
     );
 }
