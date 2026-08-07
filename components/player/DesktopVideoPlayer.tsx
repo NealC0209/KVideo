@@ -290,6 +290,8 @@ export function DesktopVideoPlayer({
     handleVideoError,
   } = logic;
 
+  const showControlsForTV = logic.showControlsForTV;
+
   const cycleWebFullscreenSize = React.useCallback(() => {
     setWebFullscreenSize((current) => {
       const currentIndex = WEB_FULLSCREEN_SIZE_ORDER.indexOf(current);
@@ -362,7 +364,7 @@ export function DesktopVideoPlayer({
       style={containerStyle}
       onMouseMove={() => { handleMouseMove(); }}
       onMouseLeave={() => isPlaying && setShowControls(false)}
-      onKeyDown={() => { handleMouseMove(); }}
+      onKeyDown={() => { showControlsForTV(); }}
     >
       <div className={stageClassName}>
         {/* Clipping Wrapper for video and overlays - Restores the 'Liquid Glass' rounded look */}

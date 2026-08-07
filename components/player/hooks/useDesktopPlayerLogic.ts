@@ -159,6 +159,7 @@ export function useDesktopPlayerLogic({
 
     return useMemo(() => ({
         handleMouseMove: controlsVisibility.handleMouseMove,
+        showControlsForTV: controlsVisibility.showControlsForTV,
         handleTouchToggleControls: controlsVisibility.handleTouchToggleControls,
         togglePlay: playbackControls.togglePlay,
         handlePlay: playbackControls.handlePlay,

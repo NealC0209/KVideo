@@ -93,6 +93,14 @@ export function useControlsVisibility({
         }
     }, [showControls, isPlaying, setShowControls, controlsTimeoutRef, mouseMoveThrottleRef]);
 
+    // For D-pad focus/keydown events: show controls without marking a mouse move.
+    // Keeps lastMouseMoveRef === 0, preserving permanent-visible TV remote mode.
+    const showControlsForTV = useCallback(() => {
+        if (!showControls) {
+            setShowControls(true);
+        }
+    }, [showControls, setShowControls]);
+
     const startSpeedMenuTimeout = useCallback(() => {
         if (speedMenuTimeoutRef.current) {
             clearTimeout(speedMenuTimeoutRef.current);
@@ -140,10 +148,11 @@ export function useControlsVisibility({
 
     const visibilityActions = useMemo(() => ({
         handleMouseMove,
+        showControlsForTV,
         handleTouchToggleControls,
         startSpeedMenuTimeout,
         clearSpeedMenuTimeout
-    }), [handleMouseMove, handleTouchToggleControls, startSpeedMenuTimeout, clearSpeedMenuTimeout]);
+    }), [handleMouseMove, showControlsForTV, handleTouchToggleControls, startSpeedMenuTimeout, clearSpeedMenuTimeout]);
 
     return visibilityActions;
 }
